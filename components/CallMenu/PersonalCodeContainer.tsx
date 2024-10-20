@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, Box, Button, Typography } from "@mui/material";
+import { Alert, Box, IconButton, Typography } from "@mui/material";
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import CheckIcon from "@mui/icons-material/Check";
 import React, { useState } from "react";
@@ -22,7 +22,7 @@ const PersonalCodeContainer = ({ personalCode }: props) => {
   };
 
   return (
-    <Box className="personal_code_container bg-blue-100 shadow-xl rounded-md p-5">
+    <Box className="personal_code_container shadow-xl rounded-md p-5 bg-white">
       <Box className="personal_code_title_container">
         <Typography
           className="personal_code_title_paragraph tracking-tight"
@@ -31,21 +31,21 @@ const PersonalCodeContainer = ({ personalCode }: props) => {
           Your Personal Code
         </Typography>
       </Box>
-      <Box className="personal_code_value_container flex justify-between ">
+      <Box className="personal_code_value_container flex justify-between items-center ">
         <Typography
-          className="personal_code_value_paragraph pt-2"
+          className="personal_code_value_paragraph"
           variant="body2"
           id="personal_code_paragraph"
         >
           {personalCode}
         </Typography>
-        <Button
-          variant="contained"
+        <IconButton
+          aria-label="copy"
           className="target:shadow-lg"
           onClick={() => copyButton(personalCode)}
         >
-          <ContentCopyOutlinedIcon />
-        </Button>
+          <ContentCopyOutlinedIcon className="text-blue-400" />
+        </IconButton>
         {ifClick && (
           <Box className="absolute bottom-3">
             <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">

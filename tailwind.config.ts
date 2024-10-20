@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      rotate: {
+        "73": "73deg",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

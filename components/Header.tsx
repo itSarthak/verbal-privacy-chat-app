@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import TagIcon from "@mui/icons-material/Tag";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -44,7 +45,20 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <TagIcon
+            // sx={{
+            //   animation: "spin 2s linear",
+            //   "@keyframes spin": {
+            //     "0%": {
+            //       transform: "rotate(360deg)",
+            //     },
+            //     "100%": {
+            //       transform: "rotate(0deg)",
+            //     },
+            //   },
+            // }}
+            className="rotate-73 mr-3"
+          />
           <Typography
             variant="h6"
             noWrap
