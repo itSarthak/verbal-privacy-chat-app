@@ -1,18 +1,16 @@
 import React from "react";
+import PersonalCodeContainer from "./CallMenu/PersonalCodeContainer";
+import Description from "./CallMenu/Description";
+import { Box } from "@mui/material";
 
 const CallMenu = () => {
   return (
-    <div
-      className="dashboard_container flex flex-col items-center mt-10 bg-slate-600 ml-auto mr-auto w-60"
+    <Box
+      className="dashboard_container rounded-lg flex flex-col pl-10 pr-10 mt-10 bg-blue-300 ml-auto mr-auto w-2/5 pt-4 pb-4 gap-y-5"
       id="dashboard_container"
     >
-      <div>
-        <div className="description_container">
-          <p className="description_container_paragraph">
-            A privacy-driven real-time video chat application
-          </p>
-        </div>
-      </div>
+      <Description />
+      <PersonalCodeContainer personalCode="DDDDsD" />
       <div className="personal_code_connecting_container">
         <p className="personal_code_connecting_paragraph">Callee Code</p>
         <div className="personal_code_connecting_input_container">
@@ -116,7 +114,7 @@ const CallMenu = () => {
         </p>
       </div>
       <div className="dashboard_blur display_none" id="dashboard_blur"></div>
-    </div>
+    </Box>
   );
 };
 

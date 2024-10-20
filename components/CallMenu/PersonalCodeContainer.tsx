@@ -1,39 +1,60 @@
-import React from "react";
+"use client";
 
-const PersonalCodeContainer = () => {
+import { Alert, Box, Button, Typography } from "@mui/material";
+import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
+import CheckIcon from "@mui/icons-material/Check";
+import React, { useState } from "react";
+
+interface props {
+  personalCode: string;
+}
+
+const PersonalCodeContainer = ({ personalCode }: props) => {
+  const [ifClick, setIfClick] = useState(false);
+
+  const copyButton = (personalCode: string) => {
+    navigator.clipboard.writeText(personalCode);
+    setIfClick(true);
+
+    setTimeout(() => {
+      setIfClick(false);
+    }, 3000);
+  };
+
   return (
-    <div className="personal_code_container">
-      <div className="personal_code_title_container">
-        <p className="personal_code_title_paragraph">Your Personal Code</p>
-      </div>
-      <div className="personal_code_value_container">
-        <p
-          className="personal_code_value_paragraph"
+    <Box className="personal_code_container bg-blue-100 shadow-xl rounded-md p-5">
+      <Box className="personal_code_title_container">
+        <Typography
+          className="personal_code_title_paragraph tracking-tight"
+          variant="h5"
+        >
+          Your Personal Code
+        </Typography>
+      </Box>
+      <Box className="personal_code_value_container flex justify-between ">
+        <Typography
+          className="personal_code_value_paragraph pt-2"
+          variant="body2"
           id="personal_code_paragraph"
         >
-          DDDDD
-        </p>
-        <button
-          className="personal_code_copy_button"
-          id="personal_code_copy_button"
+          {personalCode}
+        </Typography>
+        <Button
+          variant="contained"
+          className="target:shadow-lg"
+          onClick={() => copyButton(personalCode)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            className="copy--btn"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
+          <ContentCopyOutlinedIcon />
+        </Button>
+        {ifClick && (
+          <Box className="absolute bottom-3">
+            <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+              Successfully copied to clipboard.
+            </Alert>
+          </Box>
+        )}
+      </Box>
+    </Box>
   );
 };
 
